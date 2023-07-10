@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://wiki.ros.org/xacro" name="my_work_cell">
+  <!--Load the macro for creating a UR10e-->
+  <xacro:include filename="$(find ur_description)/urdf/inc/ur10e_macro.xacro"/>
+
+  <!--Instanciate the UR10e-->
+  <xacro:ur10e_robot prefix="" />
+
+  <!--Let's create a sort of table where the robot stands on-->
+  <link name="box">
+    <visual>
+      <origin xyz="0 0 0.5" rpy="0 0 0"/>
+      <geometry>
+        <box size="1 1 1"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <!--The robot will be on the top surface of the box in the center-->
+  <joint name="table_to_robot" type="fixed">
+    <parent link="box" />
+    <child link = "base_link" />
+    <origin xyz="0 0 1" rpy="0 0 0" />
+  </joint>
+</robot>

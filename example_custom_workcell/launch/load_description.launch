@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<launch>
+  <param name="robot_description" command="$(find xacro)/xacro '$(find example_custom_workcell)/urdf/my_cell.xacro'"/>
+</launch>
+
